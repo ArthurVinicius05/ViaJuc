@@ -1,23 +1,3 @@
-"""
-VIAJUC - Mapeamento e Monitoramento de Rotas (Jucurutu/RN -> Outras Cidades)
-API Flask + PostgreSQL (psycopg2), baseada no schema.sql.
-
-Instalação:
-    pip install flask psycopg2-binary
-
-Variáveis de ambiente:
-    DATABASE_URL  ex.: postgresql://usuario:senha@localhost:5432/viajuc
-    SECRET_KEY    chave longa e aleatória (sessão)
-
-Rodar:
-    flask --app app criar-admin          # cria o primeiro administrador
-    flask --app app run --debug
-
-Perfis:
-    - público      : vitrine de rotas, cidades e calendário (sem login)
-    - motorista    : cadastra/edita seus veículos e rotas
-    - administrador: gerencia cidades e ativa/desativa motoristas
-"""
 import os
 import re
 from contextlib import contextmanager
