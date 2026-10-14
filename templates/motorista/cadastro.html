@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block titulo %}Cadastro de motorista · ViaJuc{% endblock %}
+{% block fundo %}fundo-branco{% endblock %}
+{% block pagina %}cadastro{% endblock %}
+
+{% block conteudo %}
+  <section class="cad">
+    <form id="form">
+      <label>Nome<input name="nome" required autocomplete="name"></label>
+      <label>E-mail<input type="email" name="email" required autocomplete="email"></label>
+      <label>Senha (mín. 8 caracteres)<input type="password" name="senha" minlength="8" required autocomplete="new-password"></label>
+      <label>Telefone<input type="tel" name="telefone" placeholder="(00) 00000-0000" required autocomplete="tel"></label>
+      <label>
+        Veículo
+        <select name="tipo">
+          <option value="onibus">Ônibus</option>
+          <option value="van">Van</option>
+          <option value="micro-onibus">Micro-ônibus</option>
+          <option value="carro">Carro</option>
+        </select>
+      </label>
+      <label>Modelo do veículo<input name="modelo" placeholder="Ex.: Marcopolo Torino" required></label>
+      <label>Placa<input name="placa" placeholder="AAA9A99" maxlength="8" required></label>
+      <button class="btn ouro" type="submit">Cadastrar</button>
+      <p id="msg" class="msg" role="alert" aria-live="polite"></p>
+    </form>
+
+    <div class="lado">
+      <svg class="ico avatar"><use href="#i-user"/></svg>
+      <p>Já tem conta? <a href="/motorista/login">Entrar</a></p>
+    </div>
+  </section>
+{% endblock %}

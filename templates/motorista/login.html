@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block titulo %}Entrar · ViaJuc{% endblock %}
+{% block fundo %}fundo-praia{% endblock %}
+{% block pagina %}login{% endblock %}
+
+{% block conteudo %}
+  <form
+    id="form"
+    class="cartao-login"
+    data-api="/api/auth/motorista/login"
+    data-destino="/motorista/painel"
+  >
+    <svg class="ico avatar"><use href="#i-user"/></svg>
+    <label>
+      E-mail
+      <input class="entrada" type="email" name="email" placeholder="Insira seu e-mail aqui..." required autocomplete="email">
+    </label>
+    <label>
+      Senha
+      <input class="entrada" type="password" name="senha" placeholder="Insira sua senha aqui..." required autocomplete="current-password">
+    </label>
+    <button class="btn ouro" type="submit">Confirmar</button>
+    <p id="msg" class="msg" role="alert" aria-live="polite"></p>
+    <p>Não possui uma conta? <a href="/motorista/cadastro">Cadastre-se</a></p>
+  </form>
+{% endblock %}

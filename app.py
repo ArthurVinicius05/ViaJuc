@@ -6,7 +6,8 @@ from functools import wraps
 
 import click
 import psycopg2
-from flask import Flask, jsonify, request, session
+from dotenv import load_dotenv
+from flask import Flask, jsonify, render_template, request, session
 from flask.json.provider import DefaultJSONProvider
 from psycopg2 import errors as pgerr
 from psycopg2.extras import RealDictCursor
@@ -17,6 +18,9 @@ from werkzeug.security import check_password_hash, generate_password_hash
 # ============================================================
 # Configuração
 # ============================================================
+load_dotenv()
+
+
 class JSONProvider(DefaultJSONProvider):
     """Serializa datetime.time (usado em horarios_ida/volta) como 'HH:MM'."""
 
@@ -33,7 +37,10 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "troque-esta-chave-em-pr
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 
-DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/viajuc")
+DATABASE_URL = os.environ.get(
+    "DATABASE_URL",
+    "postgresql://postgres:postgres@localhost:5432/ViaJuc",
+)
 pool = ThreadedConnectionPool(1, 10, DATABASE_URL)
 
 
@@ -518,6 +525,32 @@ def criar_admin(nome, email, password):
         cur.execute("INSERT INTO administrador (nome, email, senha_hash) VALUES (%s, %s, %s)",
                     (nome, email, generate_password_hash(password)))
     click.echo("Administrador criado.")
+
+
+# ============================================================
+@app.get("/")
+def pagina_inicio():
+    return render_template("index.html")
+
+
+@app.get("/rota/<int:id_rota>")
+def pagina_rota(id_rota):
+    return render_template("rota.html")
+
+
+@app.get("/motorista/login")
+def pagina_login_motorista():
+    return render_template("motorista/login.html")
+
+
+@app.get("/motorista/cadastro")
+def pagina_cadastro_motorista():
+    return render_template("motorista/cadastro.html")
+
+
+@app.get("/motorista/painel")
+def pagina_painel_motorista():
+    return render_template("motorista/painel.html")
 
 
 @app.get("/api/saude")

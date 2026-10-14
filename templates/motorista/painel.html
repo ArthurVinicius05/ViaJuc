@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block titulo %}Minhas rotas · ViaJuc{% endblock %}
+{% block pagina %}painel{% endblock %}
+
+{% block conteudo %}
+  <form id="form" class="painel-form">
+    <div class="linha">
+      <label class="campo">Origem<select name="origem" required></select></label>
+      <label class="campo">Destino<select name="destino" required></select></label>
+      <label class="campo">Local de embarque<input name="embarque" placeholder="Ex.: Rodoviária" required></label>
+      <label class="campo">Local de desembarque<input name="desembarque" placeholder="Ex.: Praça central" required></label>
+    </div>
+
+    <div class="linha">
+      <label class="campo">Horários de ida<input name="ida" placeholder="Ex.: 6:00, 7:30, 9:00"></label>
+      <label class="campo">Horários de volta<input name="volta" placeholder="Ex.: 17:00, 20:00"></label>
+      <label class="campo">Data da viagem<input type="date" name="data" required></label>
+      <label class="campo">Veículo<select name="veiculo" required></select></label>
+      <label class="campo">Preço (R$)<input type="number" name="preco" min="0" step="0.01" placeholder="Opcional"></label>
+    </div>
+
+    <button id="salvar" class="btn largo" type="submit">Salvar</button>
+    <p id="msg" class="msg" role="alert" aria-live="polite"></p>
+  </form>
+
+  <div class="cabeca">
+    <h2 class="pilula">
+      <svg class="ico"><use href="#i-clock"/></svg>
+      Minhas rotas
+    </h2>
+    <button id="sair" class="btn ouro" type="button">Sair</button>
+  </div>
+  <div id="lista" class="grade"></div>
+{% endblock %}

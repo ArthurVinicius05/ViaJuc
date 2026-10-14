@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block titulo %}Horários · ViaJuc{% endblock %}
+{% block fundo %}fundo-estrada{% endblock %}
+{% block pagina %}rota{% endblock %}
+
+{% block conteudo %}
+  <h2 class="pilula ouro">
+    <svg class="ico"><use href="#i-clock"/></svg>
+    <span id="titulo">Carregando…</span>
+  </h2>
+  <p id="msg" class="msg" role="alert" aria-live="polite"></p>
+  <div id="datas" class="datas"></div>
+  <section id="detalhe" class="detalhe" aria-live="polite"></section>
+{% endblock %}

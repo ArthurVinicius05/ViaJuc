@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block pagina %}inicio{% endblock %}
+
+{% block conteudo %}
+  <form id="busca" class="painel-busca">
+    <div class="linha">
+      <label class="campo">
+        Origem
+        <input name="origem" list="cidades" placeholder="Ex.: Jucurutu" autocomplete="off">
+      </label>
+      <button
+        type="button"
+        id="trocar"
+        class="trocar"
+        title="Trocar origem e destino"
+        aria-label="Trocar origem e destino"
+      >
+        <svg class="ico"><use href="#i-swap"/></svg>
+      </button>
+      <label class="campo">
+        Destino
+        <input name="destino" list="cidades" placeholder="Ex.: Caicó" autocomplete="off">
+      </label>
+      <label class="campo">
+        Data da viagem
+        <input type="date" name="data" id="data">
+      </label>
+    </div>
+
+    <datalist id="cidades"></datalist>
+    <button class="btn largo" type="submit">
+      <svg class="ico"><use href="#i-search"/></svg>
+      Buscar viagem
+    </button>
+    <p id="msg" class="msg" role="alert" aria-live="polite"></p>
+  </form>
+
+  <h2 class="pilula">
+    <svg class="ico"><use href="#i-clock"/></svg>
+    <span id="titulo-lista">Próximas viagens</span>
+  </h2>
+  <div id="lista" class="grade" aria-live="polite"></div>
+{% endblock %}
